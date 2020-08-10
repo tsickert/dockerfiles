@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: for OUTPUT in $(find . -name "Dockerfile"); do IMAGE_TAG=$(docker.pkg.github.com/tsickert/dockerfiles/$(cut -d/ -f2 <<< "$OUTPUT"):$(date +%s)) && docker build -t $IMAGE_TAG -f $OUTPUT . && docker push $IMAGE_TAG; done;
+      run: for OUTPUT in $(find . -name "Dockerfile"); do IMAGE_TAG=$(echo docker.pkg.github.com/tsickert/dockerfiles/$(cut -d/ -f2 <<< "$OUTPUT"):$(date +%s)) && docker build -t $IMAGE_TAG -f $OUTPUT . && docker push $IMAGE_TAG; done;
