@@ -1,11 +1,11 @@
 name: Build and push curl-ubuntu
 
 on:
+  workflow-dispatch:
   push:
-    workflow-dispatch:
     branches: [ master ]
     paths:
-      - 'curl-ubuntu*'
+      - 'curl-ubuntu/*'
 
 jobs:
 
