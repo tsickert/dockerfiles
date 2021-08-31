@@ -1,7 +1,7 @@
 name: Build and push curl-ubuntu
 
 on:
-  workflow-dispatch:
+  workflow_dispatch:
   push:
     branches: [ master ]
     paths:
