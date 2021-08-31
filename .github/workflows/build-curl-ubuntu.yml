@@ -1,0 +1,17 @@
+name: Docker Image CI
+
+on:
+  push:
+    workflow-dispatch:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: IMAGE_TAG=$(echo ghcr.io/tsickert/curl-ubuntu:$(date +%s)) && docker build -t $IMAGE_TAG -f curl-ubuntu/Dockerfile . && docker login https://ghcr.io -u tsickert -p ${{ secrets.GITHUB_TOKEN }} && docker push $IMAGE_TAG
