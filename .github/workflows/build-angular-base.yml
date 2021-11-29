@@ -1,0 +1,19 @@
+name: Build and push angular-base
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+    paths:
+      - 'angular-base/*'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build and Push the Docker image
+      run: IMAGE_TAG=$(echo ghcr.io/tsickert/angular-base:latest) && docker build -t $IMAGE_TAG -f python/Dockerfile . && docker login https://ghcr.io -u tsickert -p ${{ secrets.GITHUB_TOKEN }} && docker push $IMAGE_TAG
