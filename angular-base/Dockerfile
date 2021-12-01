@@ -7,7 +7,7 @@ RUN apt-get update && \
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" && \
     nvm install --lts && \
-    chmod -R 755 /root/.nvm && \
+    chmod -R 777 /root/.nvm/ && \
     which npm && \
     which node && \
     npm install -g @angular/cli
