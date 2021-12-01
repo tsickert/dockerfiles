@@ -16,4 +16,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build and Push the Docker image
-      run: IMAGE_TAG=$(echo ghcr.io/tsickert/angular-base:latest) && docker build -t $IMAGE_TAG -f python/Dockerfile . && docker login https://ghcr.io -u tsickert -p ${{ secrets.GITHUB_TOKEN }} && docker push $IMAGE_TAG
+      run: IMAGE_TAG=$(echo ghcr.io/tsickert/angular-base:latest) && docker build -t $IMAGE_TAG -f angular-base/Dockerfile . && docker login https://ghcr.io -u tsickert -p ${{ secrets.GITHUB_TOKEN }} && docker push $IMAGE_TAG
